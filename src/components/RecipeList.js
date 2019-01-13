@@ -39,7 +39,6 @@ export class RecipeList extends Component {
     </div>
     
     
-    <Recipe></Recipe> 
     
     </React.Fragment>
     )
