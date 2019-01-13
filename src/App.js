@@ -31,7 +31,7 @@ class App extends Component {
   
   
   render() {
-    console.log(this.state.recipes);
+    //console.log(this.state.recipes);
     
     return (
     <React.Fragment>
