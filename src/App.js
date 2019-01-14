@@ -8,7 +8,8 @@ import RecipeDetails from './components/RecipeDetails'
 class App extends Component {
   state = {
     recipes:recipes,
-    url:'https://www.food2fork.com/api/search?key=b94ab4bfae8c99dd5b4725eb81bdf4c5'
+    url:'https://www.food2fork.com/api/search?key=b94ab4bfae8c99dd5b4725eb81bdf4c5',
+    details_id:35386
   }
   
   // async getRecipes(){
@@ -16,7 +17,7 @@ class App extends Component {
   //     const data = await fetch(this.state.url);
   //     const jsonData = await data.json();
   //     this.setState({
-  //       recipes:jsonData.recipes
+  //       recipes:jsonData.recipe
   //     })
   //   } catch(error) {
   //     console.log(error);
@@ -32,11 +33,11 @@ class App extends Component {
   
   render() {
     //console.log(this.state.recipes);
-    
+    console.log(this.state.details_id)
     return (
     <React.Fragment>
-    <RecipeList recipes={this.state.recipes}></RecipeList>
-    <RecipeDetails></RecipeDetails>
+    {/* <RecipeList recipes={this.state.recipes}></RecipeList> */}
+    <RecipeDetails id={this.state.details_id}></RecipeDetails>
     </React.Fragment>
     );
   }

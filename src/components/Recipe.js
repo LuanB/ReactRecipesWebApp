@@ -34,6 +34,7 @@ export class Recipe extends Component {
         <a href={source_url} 
           className='btn btn-success mx-2 text-capitalize'
           target='_blank'
+          rel='noopener noreferrer'
           >
           recipe url
         </a>  
