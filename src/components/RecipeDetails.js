@@ -3,27 +3,51 @@ import {recipe} from '../tempDetails'
 
 export class RecipeDetails extends Component {
   
-  constructor(props) {
-    super(props)
-    this.state = {
-      recipe: recipe,
-      url: `https://www.food2fork.com/api/get?key=b94ab4bfae8c99dd5b4725eb81bdf4c5&rId=${this.props.id}`
-    }
+//   constructor(props) {
+//     super(props)
+//     this.state = {
+//       recipe: recipe,
+//       url: `https://www.food2fork.com/api/get?key=b94ab4bfae8c99dd5b4725eb81bdf4c5&rId=${this.props.id}`
+//     }
+//   }
+// 
+// 
+// async componentDidMount() {
+//   console.log(this.state.url)
+//   try {
+//       const data = await fetch(this.state.url);
+//       const jsonData = await data.json();
+//       this.setState({
+//         recipe: jsonData.recipe
+//       })
+//     } catch (error) {
+//       console.log('catch error occured');
+// 
+//     }
+//   }
+// 
+  
+  state = {
+    recipe:recipe
   }
   
-
-async componentDidMount() {
-  console.log(this.state.url)
-  try {
-      const data = await fetch(this.state.url);
-      const jsonData = await data.json();
-      this.setState({
-        recipe: jsonData.recipe
-      })
-    } catch (error) {
-      console.log('catch error occured');
-  
-    }
+  async componentDidMount()  {
+    const id = this.props.id;
+    const url = `https://www.food2fork.com/api/get?key=b94ab4bfae8c99dd5b4725eb81bdf4c5&rId=${id}`;
+    try {
+      
+            const data = await fetch(url);
+            const jsonData = await data.json();
+            this.setState((state, props) => {
+              return {recipe:jsonData.recipe}
+            }, () => {});
+          } catch (error) {
+            console.log('catch error occured');
+      
+          }
+    
+    
+    
   }
   
   

@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 
 export class Recipe extends Component {
   render() {
-    console.log(this.props)
-    
+        
     const {
       image_url,
       title,
