@@ -8,13 +8,20 @@ export class RecipeList extends Component {
   
   render() {
     
-      const {recipes, handleDetails, value, handleSubmit, handleChange} = this.props;
+      const {recipes, 
+        handleDetails, 
+        value, 
+        handleSubmit, 
+        handleChange,
+        error
+      } = this.props;
     
     return (
     <React.Fragment>
     
     <RecipeSearch value={value} handleChange={handleChange}
       handleSubmit={handleSubmit}
+      error={error}
       ></RecipeSearch>
     
     <div className="container my-5">
@@ -26,8 +33,10 @@ export class RecipeList extends Component {
       </div>
       {/* end of title */}
       <div className="row">
-        {
-          recipes.map(recipe => {
+        {error? 
+          (<h1 className='text-danger text-center'>{error}</h1>) 
+          : 
+          (recipes.map(recipe => {
             return(
               <Recipe
                 key={recipe.recipe_id}
@@ -36,8 +45,11 @@ export class RecipeList extends Component {
               
                />
             )
-          })
-        }
+          }) )
+      
+      }
+        
+      
       </div>
       
       

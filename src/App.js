@@ -13,16 +13,29 @@ class App extends Component {
     details_id:35380,
     pageIndex:1,
     search:'',
-    query:'&q='
+    query:'&q=',
+    error:''
   }
   
   async getRecipes(){
     try {
       const data = await fetch(this.state.url);
       const jsonData = await data.json();
-      this.setState({
-        recipes:jsonData.recipes
-      })
+      console.log(jsonData);
+      
+      if(jsonData.recipes.length === 0) {
+        this.setState(()=> {
+          return {error: 'sorry, no results'}
+        })
+      }
+      else {
+        this.setState(() => {
+          return {
+            error:'',
+            recipes:jsonData.recipes}
+        })
+    }  
+
     } catch(error) {
       console.log(error);
   
@@ -45,6 +58,7 @@ class App extends Component {
           value={this.state.search}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          error={this.state.error}
           ></RecipeList>)
       
       case 0:
