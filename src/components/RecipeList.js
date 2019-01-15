@@ -8,12 +8,14 @@ export class RecipeList extends Component {
   
   render() {
     
-      const {recipes, handleDetails} = this.props;
+      const {recipes, handleDetails, value, handleSubmit, handleChange} = this.props;
     
     return (
     <React.Fragment>
     
-    <RecipeSearch></RecipeSearch>
+    <RecipeSearch value={value} handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      ></RecipeSearch>
     
     <div className="container my-5">
       {/* title */}
