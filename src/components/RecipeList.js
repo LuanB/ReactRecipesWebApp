@@ -8,7 +8,7 @@ export class RecipeList extends Component {
   
   render() {
     
-      const {recipes} = this.props;
+      const {recipes, handleDetails} = this.props;
     
     return (
     <React.Fragment>
@@ -29,7 +29,10 @@ export class RecipeList extends Component {
             return(
               <Recipe
                 key={recipe.recipe_id}
-                recipe={recipe} />
+                recipe={recipe}
+                handleDetails={()=>handleDetails(0,recipe.recipe_id)}
+              
+               />
             )
           })
         }

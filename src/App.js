@@ -27,19 +27,40 @@ class App extends Component {
   
   }
   
-  componentDidMount() {
-    this.getRecipes()
-  }
+  // componentDidMount() {
+  //   this.getRecipes()
+  // }
   
   displayPage = (index) => {
     switch(index) {
       default:
       case 1:
-      return(<RecipeList recipes={this.state.recipes}></RecipeList>)
+      return(
+        <RecipeList 
+          recipes={this.state.recipes}
+          handleDetails={this.handleDetails}
+          ></RecipeList>)
+      
       case 0:
-      return(<RecipeDetails id={this.state.details_id}></RecipeDetails>)
+      return(<RecipeDetails id={this.state.details_id}
+        handleIndex={this.handleIndex}></RecipeDetails>)
     }
   }
+  
+  handleIndex = index => {
+    this.setState({
+      pageIndex: index
+    })
+  }
+
+handleDetails = (index, id) => {
+  this.setState({
+    pageIndex: index,
+    details_id: id
+  })
+}
+  
+  
   render() {
     //console.log(this.state.recipes);
     //console.log(this.state.details_id)
